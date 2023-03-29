@@ -25,21 +25,12 @@
       </table>
       <table>
         <%= flash[:notice] %>
-        <% if @book_comment.errors.any? %>
-          <%= book_comment.errors.count %>件のエラーが発生しました
-          <ul>
-            <% book_comment.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-            <% end %>
-          </ul>
-        <% end %>
+
       <% @book.book_comments.each do |book_comment| %>
           <tr>
            <td><%= link_to user_path(@user) do %>
-               <%= image_tag(book_comment.user.user_profile_image(100,100)) %></p>
-               <% end %>
-               <%= link_to user_path(@user) do %>
-               <%= book_comment.user.name %>
+               <p><%= image_tag(book_comment.user.user_profile_image(50,50)) %>
+               <br><%= book_comment.user.name %></p>
                <% end %>
            </td>
            <td>
