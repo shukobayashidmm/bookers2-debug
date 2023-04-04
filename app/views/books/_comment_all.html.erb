@@ -4,8 +4,8 @@
         <td><%= link_to user_path(user) do %>
           <p><%= image_tag(book_comment.user.user_profile_image(50,50)) %>
           <br><%= book_comment.user.name %></p>
+          <% end %>
         </td>
-        <% end %>
         <td>
           <%= book_comment.comment %>
           <% if book_comment.user == current_user %>
