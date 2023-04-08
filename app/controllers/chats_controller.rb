@@ -16,17 +16,18 @@ class ChatsController < ApplicationController
     @chats = @room.chats
     @chat = Chat.new(room_id: @room.id)
 
+    @user_rooms = user_rooms
+
   end
 
   def create
     @chat = current_user.chats.new(chat_params)
-     render :validater
-    unless @chat.save
+    @chat.save
   end
 
   private
   def chat_params
-    params.require(:chat).permit(:massage, :room_id)
+    params.require(:chat).permit(:message, :room_id)
   end
 
   def reject_non_related
