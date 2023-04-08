@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "home/about"=>"homes#about"
 
   #チャット機能
-  resources :chats, only: [:show, :create]
+  resources :chats, only: [:show, :create, :destroy]
 
   #いいね機能・コメント投稿
   resources :books, only: [:index,:show,:edit,:create,:destroy,:update] do

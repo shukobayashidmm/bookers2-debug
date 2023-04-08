@@ -15,7 +15,7 @@ class ChatsController < ApplicationController
     end
     @chats = @room.chats
     @chat = Chat.new(room_id: @room.id)
-
+    @chats = Chat.all
     @user_rooms = user_rooms
 
   end
@@ -23,7 +23,16 @@ class ChatsController < ApplicationController
   def create
     @chat = current_user.chats.new(chat_params)
     @chat.save
+    @chats = Chat.all
   end
+
+  def destroy
+    @chats = Chat.all
+    chat = current_user.chats.find(params[:id])
+    chat.destroy
+  end
+
+
 
   private
   def chat_params
