@@ -4,7 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  #チャット機能
+  has_many :chats
+  has_many :user_rooms
+  has_many :rooms, through: :user_rooms
 
+  #コメント機能
   has_many :books, dependent: :destroy
   has_one_attached :profile_image
   has_many :favorites, dependent: :destroy
