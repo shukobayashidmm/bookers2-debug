@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root :to =>"homes#top"
   get "home/about"=>"homes#about"
+
+  #チャット機能
+  resources :chats, only: [:show, :create]
+
+  #いいね機能・コメント投稿
   resources :books, only: [:index,:show,:edit,:create,:destroy,:update] do
    resource :favorites, only: [:create, :destroy]
    resources :book_comments, only: [:create, :destroy]
