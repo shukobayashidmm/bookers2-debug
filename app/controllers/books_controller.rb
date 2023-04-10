@@ -7,9 +7,9 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @user = @book.user
      unless
-      ReadCount.find_by(user_id: current_user.id, book_id: @book.id)
+       ReadCount.where(created_at: Time.zone.now.all_day).find_by(user_id: current_user.id, book_id: @book.id)
       current_user.read_counts.create(book_id: @book.id)
-     end
+    end
   end
 
   def index
