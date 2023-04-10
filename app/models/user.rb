@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  #カウンター機能
+  has_many :read_counts, dependent: :destroy
+
   #チャット機能
   has_many :chats
   has_many :user_rooms
